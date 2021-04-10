@@ -4,7 +4,8 @@
   "description": "FullStack con node js y React",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "type": "module",
   "author": "Kevin Esquivel",
