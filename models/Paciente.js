@@ -27,6 +27,14 @@ const pacientesSchema = new Schema({
     required: true,
     trim: true,
   },
+  registro: {
+    type: Date,
+    default: Date.now(),
+  },
+  creador: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Registros'
+  },
 });
 
-export default mongoose.model('Pacientes',pacientesSchema);
+export default mongoose.model("Pacientes", pacientesSchema);
