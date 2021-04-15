@@ -96,6 +96,7 @@ const updateCliente = async (req, res, next) => {
     const { _id, name, email } = req;
 
     const existe = await Paciente.findOne({ _id: req.params.id, creador: _id });
+
     if (!existe) {
       return res.status(501).json({
         status: "Not found",
@@ -129,6 +130,18 @@ const updateCliente = async (req, res, next) => {
 const deleteCliente = async (req, res, next) => {
   try {
     const { _id, name, email } = req;
+
+    const existe = await Paciente.findOne({ _id: req.params.id, creador: _id });
+    
+    if (!existe) {
+      return res.status(501).json({
+        status: "Not found",
+        code: 501,
+        mensaje: "No tiene permiso para eliminar este registro",
+      });
+    }
+
+
     const paciente = await Paciente.findOneAndDelete({
       _id: req.params.id,
       creador: _id,
